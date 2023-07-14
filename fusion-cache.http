@@ -1,0 +1,19 @@
+@hostname = localhost
+@port = 7262
+@host = https://{{hostname}}:{{port}}
+@contentType = application/json
+
+### 1 Set cache data
+POST {{host}}/Data
+Content-Type: {{contentType}}
+
+{
+  "guid": "a7e36920-4945-4606-b0fc-a95e9ddb1e29",
+  "number": 102
+}
+
+### Get cache data (if not present, it will returns the data)
+GET {{host}}/Data
+
+### Delete cache data
+DELETE {{host}}/Data
