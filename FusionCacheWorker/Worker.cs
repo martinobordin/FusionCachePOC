@@ -18,7 +18,7 @@ namespace FusionCacheWorker
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var cachedEntry = this.cache.TryGet<CacheData>(Constants.CacheKey);
+                var cachedEntry = await this.cache.TryGetAsync<CacheData>(Constants.CacheKey, token: stoppingToken);
                 if (cachedEntry.HasValue)
                 {
                     this.logger.LogInformation("Value retrieved from cache {key}: {value}", Constants.CacheKey, cachedEntry.Value);
